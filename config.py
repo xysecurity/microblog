@@ -9,7 +9,7 @@ class Config(object):
     MAIL_SERVER = 'smtp.163.com'
     MAIL_PORT = 25
     MAIL_USE_TLS = False
-    MAIL_USERNAME = '18630318396@163.com'
-    MAIL_PASSWORD = 'WANG123456'
-    ADMINS = ['18630318396@163.com']
+    MAIL_USERNAME = '1xxx@163.com'
+    MAIL_PASSWORD = 'xxxxx'
+    ADMINS = ['xxxx@163.com']
     POSTS_PER_PAGE = 5
