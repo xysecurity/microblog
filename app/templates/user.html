@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+     <div class="container">
+    <table class="table">
+        <tr>
+            <td><img src="{{ user.avatar(218) }}"></td>
+            <td>
+                <h1>User: {{ user.nickname }}</h1>
+                {% if user.about_me %}<p><h4>{{ user.about_me }}</h4></p>{% endif %}
+                {% if user.last_seen %}<p><h5>Last seen on: {{ user.last_seen }}</h5></p>{% endif %}
+                <p>     被关注     {{ user.followers.count() }}  人<br>
+                        关注了 {{ user.followed.count() }} 人
+                {% if user == current_user %}
+                <p><a class="nav-link" href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
+                    {% elif not current_user.is_following(user) %}
+                    <a class="nav-link" href="{{ url_for('follow',nickname=user.nickname) }}">Follow</a>
+                    {% else %}
+                    <a class="nav-link" href="{{ url_for('unfollow',nickname=user.nickname) }}">UnFollow</a>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+     </div>
+    <hr>
+     <div class="container">
+    {% for post in posts %}
+       {% include '_post.html' %}
+    {% endfor %}
+<ul class="nav justify-content-center">
+    {% if prev_url %}
+        <li class="nav-item">
+    <a class="nav-link" href="{{ prev_url }}">back posts</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+    <a class="nav-link" >back posts</a>
+        </li>
+    {% endif %}
+    {% if next_url %}
+        <li class="nav-item">
+    <a class= "nav-link" href="{{ next_url }}">next posts</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+    <a class= "nav-link" >next posts</a>
+        </li>
+    {% endif %}
+    </ul>
+    </div>
+{% endblock %}

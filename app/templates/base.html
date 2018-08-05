@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Microblog</title>
+        {% else %}
+        <title>Welcome to Microblog</title>
+        {% endif %}
+     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/litera/bootstrap.min.css">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container bg-light text-dark" >
+
+            <h1>FIRST BLOG:</h1>
+         <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+          </li>
+
+            {% if current_user.is_anonymous %}
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                </li>
+            {% else %}
+                 <li class="nav-item">
+                 <a class= "nav-link" href="{{ url_for('user', username=current_user.nickname) }}">Profile</a>
+                </li>
+                 <li class="nav-item">
+                 <a class =" nav-link disabled" href="{{ url_for('logout') }}" >Logout</a>
+                 </li>
+                </ul>
+
+            {% endif %}
+        </div>
+
+        <hr>
+        <div class="container bg-info text-white">
+        {% with messages = get_flashed_messages() %}
+
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+
+        {% endif %}
+        {% endwith %}
+        </div>
+        {% block content %}{% endblock %}
+    </body>
+</html>

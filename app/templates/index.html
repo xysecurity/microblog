@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% block content %}
+    <div class="container">
+     <div class="row">
+<div class="col-md-10 offset-md-1 col-sm-6 col-sm-offset-3">
+    <h2>Welcome, {{ current_user.nickname }}!</h2>
+    <form action="" method="post" name="post">
+    {{ form.hidden_tag() }}
+
+          {{ form.post(size=100, maxlength=140) }}
+
+            <td>
+                {% for error in form.errors.post %}
+                 <span style="color: red;">[{{error}}]</span><br>
+                {% endfor %}
+            </td>
+
+    <tr>
+        <td><input class="btn btn-success" type="submit" value="Post!"></td>
+    </tr>
+
+    </form>
+    </div>
+     </div>
+    </div>
+    <hr>
+    <div class="container">
+    <div class="row">
+<div class="col-md-10 offset-md-1 col-sm-6 col-sm-offset-3">
+    {% for post in posts %}
+       {% include '_post.html' %}
+    {% endfor %}
+<ul class="nav justify-content-center">
+    {% if prev_url %}
+        <li class="nav-item">
+    <a class="nav-link" href="{{ prev_url }}">back posts</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+    <a class="nav-link" >back posts</a>
+        </li>
+    {% endif %}
+    {% if next_url %}
+        <li class="nav-item">
+    <a class= "nav-link" href="{{ next_url }}">next posts</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+    <a class= "nav-link" >next posts</a>
+        </li>
+    {% endif %}
+    </ul>
+    </div>
+    </div>
+    </div>
+{% endblock %}
