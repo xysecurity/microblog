@@ -1,3 +1,4 @@
-# Welcome to Microblog!
+# Welcome to PengYun Wang 'Microblog!
 
-This is an example application featured in my [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). See the tutorial for instructions on how to work with it.
+这是我在学习Python Web相关知识，并且使用FLask框架自己动手做的一个开源项目。
+这个博客实现了用户登录、用户注册、发送博文、关注与被关注、用户主页、用户信息编辑、邮件发送等功能。
