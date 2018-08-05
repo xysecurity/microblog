@@ -40,6 +40,13 @@ Open the app directory and input the following command to start the website.
 
 >./python run.py
 
+访问如下地址，打开博客网站
+
+Visit the following website to open the blog.
+
+>http://127.0.0.1:5000/ 
+
+
 ## 主要功能 Major functions
 
 ### 用户登录 User login
